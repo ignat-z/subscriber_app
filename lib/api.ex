@@ -1,10 +1,10 @@
 defmodule Subscriber.API do
   use Maru.Router
 
-  mount Subscriber.Router.Homepage
+  mount Subscriber.Router.Subscription
 
-  rescue_from :all do
+  rescue_from :all, as: exception do
     status 500
-    "Server Error"
+    "ERROR: #{inspect exception}"
   end
 end
