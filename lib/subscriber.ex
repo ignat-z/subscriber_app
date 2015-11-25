@@ -5,6 +5,7 @@ defmodule Subscriber do
     import Supervisor.Spec
 
     children = [
+      worker(Subscriber.Repo, [])
     ]
 
     opts = [strategy: :one_for_one, name: Subscriber.Supervisor]

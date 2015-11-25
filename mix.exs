@@ -16,7 +16,7 @@ defmodule Subscriber.Mixfile do
   def application do
     [applications:
       (Mix.env == :dev && [:exsync] || []) ++
-      [:logger, :maru],
+      [:logger, :maru, :postgrex, :ecto],
       mod: {Subscriber, []}]
   end
 
@@ -31,6 +31,8 @@ defmodule Subscriber.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [ { :maru,         "~> 0.8" },
+      { :ecto,         "~> 1.0" },
+      { :postgrex,     ">= 0.0.0" },
       { :exsync,       "~> 0.1", only: :dev }
     ]
   end
