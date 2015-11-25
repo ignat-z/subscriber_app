@@ -1,0 +1,2 @@
+defmodule Subscriber do
+end
