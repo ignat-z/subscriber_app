@@ -14,7 +14,10 @@ defmodule Subscriber.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: (Mix.env == :dev && [:exsync] || []) ++ [:logger, :maru]]
+    [applications:
+      (Mix.env == :dev && [:exsync] || []) ++
+      [:logger, :maru],
+      mod: {Subscriber, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -27,8 +30,8 @@ defmodule Subscriber.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [ { :maru,       "~> 0.8"},
-      { :exsync,     "~> 0.1", only: :dev },
+    [ { :maru,         "~> 0.8" },
+      { :exsync,       "~> 0.1", only: :dev }
     ]
   end
 end
