@@ -1,5 +1,6 @@
 defmodule Subscriber.Router.Subscription do
   use Maru.Router
+  plug Plug.Logger
 
   namespace :subscription do
     desc "Provides subscribe ability for user"
@@ -8,6 +9,6 @@ defmodule Subscriber.Router.Subscription do
     end
     put do
       params |> IO.inspect
-    end
+      end
   end
 end
