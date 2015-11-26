@@ -20,7 +20,6 @@ defmodule SubscriberApp.Router.Subscription do
       changeset = Subscriber.changeset(%Subscriber{}, params)
       case Repo.insert(changeset) do
         { :ok, _ } ->
-          status 200
           %{ status: :ok }
         { :error, changeset } ->
           status 400
