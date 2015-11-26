@@ -33,6 +33,7 @@ defmodule SubscriberApp.Mixfile do
     [ { :maru,         "~> 0.8" },
       { :ecto,         "~> 1.0" },
       { :postgrex,     ">= 0.0.0" },
+      { :exredis,      ">= 0.2.2" },
       { :poison,       "~> 1.5" },
       { :exsync,       "~> 0.1", only: :dev }
     ]

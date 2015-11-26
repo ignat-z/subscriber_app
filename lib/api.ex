@@ -3,6 +3,7 @@ defmodule SubscriberApp.API do
 
   mount SubscriberApp.Router.Subscription
   mount SubscriberApp.Router.Subscribers
+  mount SubscriberApp.Router.StaticDocuments
 
   rescue_from :all, as: exception do
     status 500
