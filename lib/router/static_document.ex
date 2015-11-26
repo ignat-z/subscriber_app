@@ -6,7 +6,12 @@ defmodule SubscriberApp.Router.StaticDocuments do
   namespace :static_documents do
     desc "Return document from redis"
     get do
-      Document.all
+      document = Document.all
+      case document do
+        :undefined -> %{}
+        _ -> document
+      end
     end
   end
+
 end
