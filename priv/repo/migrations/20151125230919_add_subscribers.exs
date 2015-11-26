@@ -1,4 +1,4 @@
-defmodule Subscriber.Repo.Migrations.AddSubscribers do
+defmodule SubscriberApp.Repo.Migrations.AddSubscribers do
   use Ecto.Migration
 
   def change do

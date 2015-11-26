@@ -1,14 +1,14 @@
-defmodule Subscriber do
+defmodule SubscriberApp do
   use Application
 
   def start(_type, _args) do
     import Supervisor.Spec
 
     children = [
-      worker(Subscriber.Repo, [])
+      worker(SubscriberApp.Repo, [])
     ]
 
-    opts = [strategy: :one_for_one, name: Subscriber.Supervisor]
+    opts = [strategy: :one_for_one, name: SubscriberApp.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

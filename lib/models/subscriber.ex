@@ -1,4 +1,4 @@
-defmodule Subscriber.Subscriber do
+defmodule SubscriberApp.Subscriber do
   use Ecto.Model
 
   schema "subscribers" do

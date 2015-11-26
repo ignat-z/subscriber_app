@@ -1,7 +1,7 @@
-defmodule Subscriber.API do
+defmodule SubscriberApp.API do
   use Maru.Router
 
-  mount Subscriber.Router.Subscription
+  mount SubscriberApp.Router.Subscription
 
   rescue_from :all, as: exception do
     status 500

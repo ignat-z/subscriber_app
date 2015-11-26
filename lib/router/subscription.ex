@@ -1,4 +1,4 @@
-defmodule Subscriber.Router.Subscription do
+defmodule SubscriberApp.Router.Subscription do
   use Maru.Router
   plug Plug.Logger
 

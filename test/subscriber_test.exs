@@ -1,6 +1,6 @@
-defmodule SubscriberTest do
+defmodule SubscriberAppTest do
   use ExUnit.Case
-  doctest Subscriber
+  doctest SubscriberApp
 
   test "the truth" do
     assert 1 + 1 == 2

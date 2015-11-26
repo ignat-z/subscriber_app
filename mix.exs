@@ -1,8 +1,8 @@
-defmodule Subscriber.Mixfile do
+defmodule SubscriberApp.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :subscriber,
+    [app: :subscriber_app,
      version: "0.0.1",
      elixir: "~> 1.1",
      build_embedded: Mix.env == :prod,
@@ -17,7 +17,7 @@ defmodule Subscriber.Mixfile do
     [applications:
       (Mix.env == :dev && [:exsync] || []) ++
       [:logger, :maru, :postgrex, :ecto],
-      mod: {Subscriber, []}]
+      mod: {SubscriberApp, []}]
   end
 
   # Dependencies can be Hex packages:

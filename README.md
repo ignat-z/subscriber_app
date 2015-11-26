@@ -1,4 +1,4 @@
-# Subscriber
+# SubscriberApp
 
 **TODO: Add description**
 
@@ -9,11 +9,11 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add subscriber to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:subscriber, "~> 0.0.1"}]
+          [{:subscriber_app, "~> 0.0.1"}]
         end
 
   2. Ensure subscriber is started before your application:
 
         def application do
-          [applications: [:subscriber]]
+          [applications: [:subscriber_app]]
         end
