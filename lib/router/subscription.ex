@@ -6,14 +6,18 @@ defmodule SubscriberApp.Router.Subscription do
   alias SubscriberApp.Subscriber
   alias SubscriberApp.Repo
 
-  namespace :subscription do
-    desc "Provides subscribe ability for user"
-    params do
-      requires :email, type: String
-    end
-    put do
-      changeset = Subscriber.changeset(%Subscriber{}, params)
+  desc "Provides subscribe ability for user"
+  params do
+    requires :email, type: String
+  end
+  put "/subscribe" do
+    subscriber = Subscriber |> Repo.get_by(email: params[:email])
 
+    if subscriber do
+      Repo.update!(%{subscriber | active: true})
+      %{ status: :ok }
+    else
+      changeset = Subscriber.changeset(%Subscriber{}, params)
       case Repo.insert(changeset) do
         {:ok, _} ->
           status 200
@@ -23,7 +27,25 @@ defmodule SubscriberApp.Router.Subscription do
           changeset.errors |> Enum.into(%{})
       end
     end
+  end
 
+  desc "Provides unsubscribe ability for user"
+  params do
+    requires :email, type: String
+  end
+  put "/unsubscribe" do
+    subscriber = Subscriber |> Repo.get_by(email: params[:email])
+
+    if subscriber do
+      Repo.update!(%{subscriber | active: false})
+      %{ status: :ok }
+    else
+      status 400
+      %{ error: "Can't find such subscriber" }
+    end
+  end
+
+  namespace :subscription do
     desc "Return all active subscribers"
     get do
       Subscriber |> Subscriber.active |> Repo.all

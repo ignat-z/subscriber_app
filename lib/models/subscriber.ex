@@ -15,6 +15,7 @@ defmodule SubscriberApp.Subscriber do
   def changeset(subscriber, params \\ :empty) do
     subscriber
     |> cast(params, ~w(email))
+    |> validate_format(:email, ~r/.+\@.+\..+/)
     |> unique_constraint(:email)
   end
 
