@@ -21,4 +21,13 @@ defmodule SubscriberApp.Subscriber do
   def active(query) do
     query |> where([subscribers], subscribers.active == true)
   end
+
+  def count(query) do
+    query |> select([subscribers], count("*"))
+  end
+
+  def this_day(query) do
+    query |> where([subscribers],
+      subscribers.inserted_at > date_add(subscribers.inserted_at, -1, "day"))
+  end
 end

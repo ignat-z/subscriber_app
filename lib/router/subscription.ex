@@ -28,5 +28,12 @@ defmodule SubscriberApp.Router.Subscription do
     get do
       Subscriber |> Subscriber.active |> Repo.all
     end
+
+    desc "Return how much subscribers for this day"
+    get "/count" do
+      count = Subscriber |> Subscriber.count |> Subscriber.this_day |> Repo.one
+      %{ count: count }
+    end
+
   end
 end
