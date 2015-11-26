@@ -44,17 +44,4 @@ defmodule SubscriberApp.Router.Subscription do
       %{ status: :error, reason: "Can't find such subscriber" }
     end
   end
-
-  namespace :subscription do
-    desc "Return all active subscribers"
-    get do
-      Subscriber |> Subscriber.active |> Repo.all
-    end
-
-    desc "Return how much subscribers for this day"
-    get "/count" do
-      count = Subscriber |> Subscriber.count |> Subscriber.this_day |> Repo.one
-      %{ count: count }
-    end
-  end
 end
