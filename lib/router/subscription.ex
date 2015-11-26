@@ -1,8 +1,10 @@
 defmodule SubscriberApp.Router.Subscription do
   use Maru.Router
+
   plug Plug.Logger
-  import Ecto.Query
+
   alias SubscriberApp.Subscriber
+  alias SubscriberApp.Repo
 
   namespace :subscription do
     desc "Provides subscribe ability for user"
@@ -10,12 +12,21 @@ defmodule SubscriberApp.Router.Subscription do
       requires :email, type: String
     end
     put do
-      params |> IO.inspect
+      changeset = Subscriber.changeset(%Subscriber{}, params)
+
+      case Repo.insert(changeset) do
+        {:ok, _} ->
+          status 200
+          %{ status: :ok }
+        {:error, changeset} ->
+          status 400
+          changeset.errors |> Enum.into(%{})
+      end
     end
 
     desc "Return all active subscribers"
     get do
-      Subscriber |> Subscriber.active |> SubscriberApp.Repo.all
+      Subscriber |> Subscriber.active |> Repo.all
     end
   end
 end
