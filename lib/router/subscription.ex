@@ -24,7 +24,7 @@ defmodule SubscriberApp.Router.Subscription do
           %{ status: :ok }
         {:error, changeset} ->
           status 400
-          changeset.errors |> Enum.into(%{})
+          %{ status: :error, reason: changeset.errors |> Enum.into(%{}) }
       end
     end
   end
@@ -41,7 +41,7 @@ defmodule SubscriberApp.Router.Subscription do
       %{ status: :ok }
     else
       status 400
-      %{ error: "Can't find such subscriber" }
+      %{ status: :error, reason: "Can't find such subscriber" }
     end
   end
 
