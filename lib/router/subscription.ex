@@ -14,15 +14,15 @@ defmodule SubscriberApp.Router.Subscription do
     subscriber = Subscriber |> Repo.get_by(email: params[:email])
 
     if subscriber do
-      Repo.update!(%{subscriber | active: true})
+      Repo.update!(%{ subscriber | active: true })
       %{ status: :ok }
     else
       changeset = Subscriber.changeset(%Subscriber{}, params)
       case Repo.insert(changeset) do
-        {:ok, _} ->
+        { :ok, _ } ->
           status 200
           %{ status: :ok }
-        {:error, changeset} ->
+        { :error, changeset } ->
           status 400
           %{ status: :error, reason: changeset.errors |> Enum.into(%{}) }
       end
@@ -37,7 +37,7 @@ defmodule SubscriberApp.Router.Subscription do
     subscriber = Subscriber |> Repo.get_by(email: params[:email])
 
     if subscriber do
-      Repo.update!(%{subscriber | active: false})
+      Repo.update!(%{ subscriber | active: false })
       %{ status: :ok }
     else
       status 400
@@ -56,6 +56,5 @@ defmodule SubscriberApp.Router.Subscription do
       count = Subscriber |> Subscriber.count |> Subscriber.this_day |> Repo.one
       %{ count: count }
     end
-
   end
 end
