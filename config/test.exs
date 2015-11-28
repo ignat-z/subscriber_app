@@ -1,5 +1,8 @@
 use Mix.Config
 
+config :maru, SubscriberApp.API,
+  http: [port: 8880]
+
 config :subscriber_app, SubscriberApp.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "subscriber_test",
