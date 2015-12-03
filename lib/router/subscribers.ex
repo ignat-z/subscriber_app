@@ -8,8 +8,22 @@ defmodule SubscriberApp.Router.Subscribers do
 
   namespace :subscribers do
     desc "Return all active subscribers"
+    params do
+      optional :page,       type: Integer
+      optional :page_size,  type: Integer,  default: 10
+    end
     get "/all" do
-      Subscriber |> Subscriber.active |> Repo.all
+      page = Subscriber
+        |> Subscriber.active
+        |> Repo.paginate(page: params.page, page_size: params.page_size)
+
+      %{
+        subscribers:   page.entries,
+        page_number:   page.page_number,
+        page_size:     page.page_size,
+        total_pages:   page.total_pages,
+        total_entries: page.total_entries
+      }
     end
 
     desc "Return how much subscribers for this day"

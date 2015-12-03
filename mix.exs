@@ -32,6 +32,7 @@ defmodule SubscriberApp.Mixfile do
   defp deps do
     [ { :maru,         "~> 0.8" },
       { :ecto,         "~> 1.0" },
+      { :scrivener,    "~> 1.0" },
       { :postgrex,     ">= 0.0.0" },
       { :exredis,      ">= 0.2.3" },
       { :poison,       "~> 1.5" },
