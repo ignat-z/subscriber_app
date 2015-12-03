@@ -14,11 +14,11 @@ defmodule SubscriberApp.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications:
-      (Mix.env == :dev && [:exsync] || []) ++
-      [:logger, :maru, :postgrex, :ecto],
-      mod: {SubscriberApp, []}]
+    [applications: applications(Mix.env), mod: {SubscriberApp, []}]
   end
+
+  def applications(:dev), do: applications(:default) ++ [:exsync]
+  def applications(_),    do: [:logger, :maru, :postgrex, :ecto]
 
   # Dependencies can be Hex packages:
   #
