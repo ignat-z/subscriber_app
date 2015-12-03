@@ -1,5 +1,8 @@
 # SubscriberApp
 
+[![Circle
+CI](https://circleci.com/gh/ignat-zakrevsky/subscriber_app/tree/master.svg?style=svg)](https://circleci.com/gh/ignat-zakrevsky/subscriber_app/tree/master)
+
 PoC Elixir Application
 
 ## Deploy
