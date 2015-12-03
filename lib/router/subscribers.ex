@@ -28,7 +28,10 @@ defmodule SubscriberApp.Router.Subscribers do
 
     desc "Return how much subscribers for this day"
     get "/today_subscribed" do
-      count = Subscriber |> Subscriber.count |> Subscriber.this_day |> Repo.one
+      count = Subscriber
+        |> Subscriber.count
+        |> Subscriber.this_day
+        |> Repo.one
       %{ count: count }
     end
   end
