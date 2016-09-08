@@ -13,7 +13,7 @@ defmodule SubscriberApp.Router.Subscribers do
     get "/all" do
       page = Subscriber
         |> Subscriber.active
-        |> Repo.paginate(page: params.page, page_size: params.page_size)
+        |> Repo.paginate(params)
 
       conn
         |> json(%{
