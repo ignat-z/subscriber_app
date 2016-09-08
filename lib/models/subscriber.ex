@@ -4,7 +4,7 @@ defmodule SubscriberApp.Subscriber do
   import Ecto.Query
   import Ecto.Changeset
 
-  @derive { Poison.Encoder, only: [:email] }
+  @derive {Poison.Encoder, only: [:email]}
 
   schema "subscribers" do
     timestamps

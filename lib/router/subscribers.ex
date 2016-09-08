@@ -32,7 +32,7 @@ defmodule SubscriberApp.Router.Subscribers do
         |> Subscriber.this_day
         |> Repo.one
       conn
-        |> json(%{ count: count })
+        |> json(%{count: count})
     end
   end
 end

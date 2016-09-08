@@ -30,4 +30,5 @@ iex -S mix                       # run development server
 mix deps.get                     # dependencies
 mix do ecto.create, ecto.migrate # db tasks
 mix test                         # run tests
+mix credo --ignore readability   # run linter
 ```

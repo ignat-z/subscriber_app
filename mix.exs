@@ -37,6 +37,7 @@ defmodule SubscriberApp.Mixfile do
       { :postgrex,       ">= 0.0.0" },
       { :exredis,        ">= 0.2.3" },
       { :poison,         "~> 2.2.0" },
+      { :credo,          "~> 0.4", only: [:dev, :test]},
       { :exsync,         "~> 0.1", only: :dev }
     ]
   end

@@ -12,18 +12,18 @@ defmodule SubscriberApp.Router.Subscription do
     subscriber = Subscriber |> Repo.get_by(email: params[:email])
 
     if subscriber do
-      Repo.update!(%{ subscriber | active: true })
-      %{ status: :ok }
+      Repo.update!(%{subscriber | active: true})
+      %{status: :ok}
     else
       changeset = Subscriber.changeset(%Subscriber{}, params)
       case Repo.insert(changeset) do
-        { :ok, _ } ->
+        {:ok, _} ->
           conn
-            |> json(%{ status: :ok })
-        { :error, changeset } ->
+            |> json(%{status: :ok})
+        {:error, changeset} ->
           conn
             |> put_status(400)
-            |> json(%{ status: :error, reason: changeset.errors |> Enum.into(%{}) })
+            |> json(%{status: :error, reason: changeset.errors |> Enum.into(%{})})
       end
     end
   end
@@ -36,13 +36,13 @@ defmodule SubscriberApp.Router.Subscription do
     subscriber = Subscriber |> Repo.get_by(email: params[:email])
 
     if subscriber do
-      Repo.update!(%{ subscriber | active: false })
+      Repo.update!(%{subscriber | active: false})
       conn
-        |> json(%{ status: :ok })
+        |> json(%{status: :ok})
     else
       conn
         |> put_status(400)
-        |> json(%{ status: :error, reason: "Can't find such subscriber" })
+        |> json(%{status: :error, reason: "Can't find such subscriber"})
     end
   end
 end
