@@ -3,6 +3,6 @@ defmodule Document do
   import Exredis
 
   def all do
-    start_link |> elem(1) |> query ["GET", "#{@redis_namespace}:all"]
+    start_link |> elem(1) |> query(["GET", "#{@redis_namespace}:all"])
   end
 end
