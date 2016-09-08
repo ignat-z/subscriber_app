@@ -7,10 +7,12 @@ defmodule SubscriberApp.Router.StaticDocuments do
     desc "Return document from redis"
     get do
       document = Document.all
-      case document do
+      result = case document do
         :undefined -> %{}
         _ -> document
       end
+      conn
+        |> text(result)
     end
   end
 
