@@ -5,6 +5,14 @@ defmodule SubscriberApp.API do
   mount SubscriberApp.Router.Subscribers
   mount SubscriberApp.Router.StaticDocuments
 
+  before do
+    plug Plug.Logger
+    plug Plug.Parsers,
+      pass: ["*/*"],
+      json_decoder: Poison,
+      parsers: [:urlencoded, :json, :multipart]
+  end
+
   rescue_from :all, as: exception do
     conn
       |> put_status(500)

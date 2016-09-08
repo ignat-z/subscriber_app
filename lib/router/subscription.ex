@@ -1,8 +1,6 @@
 defmodule SubscriberApp.Router.Subscription do
   use Maru.Router
 
-  plug Plug.Logger
-
   alias SubscriberApp.Subscriber
   alias SubscriberApp.Repo
 

@@ -1,16 +1,14 @@
 defmodule SubscriberApp.Router.Subscribers do
   use Maru.Router
 
-  plug Plug.Logger
-
   alias SubscriberApp.Subscriber
   alias SubscriberApp.Repo
 
   namespace :subscribers do
     desc "Return all active subscribers"
     params do
-      optional :page,       type: Integer,  default: 0
-      optional :page_size,  type: Integer,  default: 10
+      requires :page,       type: Integer,  default: 0
+      requires :page_size,  type: Integer,  default: 10
     end
     get "/all" do
       page = Subscriber
