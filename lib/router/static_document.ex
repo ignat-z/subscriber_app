@@ -12,7 +12,7 @@ defmodule SubscriberApp.Router.StaticDocuments do
         _ -> document
       end
       conn
-        |> text(result)
+        |> json(result)
     end
   end
 

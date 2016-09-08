@@ -9,7 +9,7 @@ defmodule SubscriberApp.Router.Subscribers do
   namespace :subscribers do
     desc "Return all active subscribers"
     params do
-      optional :page,       type: Integer
+      optional :page,       type: Integer,  default: 0
       optional :page_size,  type: Integer,  default: 10
     end
     get "/all" do
@@ -18,7 +18,7 @@ defmodule SubscriberApp.Router.Subscribers do
         |> Repo.paginate(page: params.page, page_size: params.page_size)
 
       conn
-        |> text(%{
+        |> json(%{
           subscribers:   page.entries,
           page_number:   page.page_number,
           page_size:     page.page_size,
@@ -34,7 +34,7 @@ defmodule SubscriberApp.Router.Subscribers do
         |> Subscriber.this_day
         |> Repo.one
       conn
-        |> text(%{ count: count })
+        |> json(%{ count: count })
     end
   end
 end

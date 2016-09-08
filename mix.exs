@@ -30,13 +30,14 @@ defmodule SubscriberApp.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [ { :maru,         "~> 0.10" },
-      { :ecto,         "~> 2.0" },
-      { :scrivener,    "~> 2.1.1" },
-      { :postgrex,     ">= 0.0.0" },
-      { :exredis,      ">= 0.2.3" },
-      { :poison,       "~> 2.2.0" },
-      { :exsync,       "~> 0.1", only: :dev }
+    [ { :maru,           "~> 0.10" },
+      { :ecto,           "~> 2.0" },
+      { :scrivener,      "~> 2.1.1" },
+      { :scrivener_ecto, "~> 1.0.1"},
+      { :postgrex,       ">= 0.0.0" },
+      { :exredis,        ">= 0.2.3" },
+      { :poison,         "~> 2.2.0" },
+      { :exsync,         "~> 0.1", only: :dev }
     ]
   end
 end
