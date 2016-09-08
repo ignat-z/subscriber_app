@@ -17,13 +17,14 @@ defmodule SubscriberApp.Router.Subscribers do
         |> Subscriber.active
         |> Repo.paginate(page: params.page, page_size: params.page_size)
 
-      %{
-        subscribers:   page.entries,
-        page_number:   page.page_number,
-        page_size:     page.page_size,
-        total_pages:   page.total_pages,
-        total_entries: page.total_entries
-      }
+      conn
+        |> text(%{
+          subscribers:   page.entries,
+          page_number:   page.page_number,
+          page_size:     page.page_size,
+          total_pages:   page.total_pages,
+          total_entries: page.total_entries
+        })
     end
 
     desc "Return how much subscribers for this day"
@@ -32,7 +33,8 @@ defmodule SubscriberApp.Router.Subscribers do
         |> Subscriber.count
         |> Subscriber.this_day
         |> Repo.one
-      %{ count: count }
+      conn
+        |> text(%{ count: count })
     end
   end
 end

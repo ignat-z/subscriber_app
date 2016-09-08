@@ -4,7 +4,7 @@ defmodule SubscriberApp.Mixfile do
   def project do
     [app: :subscriber_app,
      version: "0.0.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.3.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -30,12 +30,12 @@ defmodule SubscriberApp.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [ { :maru,         "~> 0.8" },
-      { :ecto,         "~> 1.0" },
-      { :scrivener,    "~> 1.0" },
+    [ { :maru,         "~> 0.10" },
+      { :ecto,         "~> 2.0" },
+      { :scrivener,    "~> 2.1.1" },
       { :postgrex,     ">= 0.0.0" },
       { :exredis,      ">= 0.2.3" },
-      { :poison,       "~> 1.5" },
+      { :poison,       "~> 2.2.0" },
       { :exsync,       "~> 0.1", only: :dev }
     ]
   end

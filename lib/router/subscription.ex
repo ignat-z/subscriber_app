@@ -20,10 +20,12 @@ defmodule SubscriberApp.Router.Subscription do
       changeset = Subscriber.changeset(%Subscriber{}, params)
       case Repo.insert(changeset) do
         { :ok, _ } ->
-          %{ status: :ok }
+          conn
+            |> text(%{ status: :ok })
         { :error, changeset } ->
-          status 400
-          %{ status: :error, reason: changeset.errors |> Enum.into(%{}) }
+          conn
+            |> put_status(400)
+            |> text(%{ status: :error, reason: changeset.errors |> Enum.into(%{}) })
       end
     end
   end
@@ -37,10 +39,12 @@ defmodule SubscriberApp.Router.Subscription do
 
     if subscriber do
       Repo.update!(%{ subscriber | active: false })
-      %{ status: :ok }
+      conn
+        |> text(%{ status: :ok })
     else
-      status 400
-      %{ status: :error, reason: "Can't find such subscriber" }
+      conn
+        |> put_status(400)
+        |> text(%{ status: :error, reason: "Can't find such subscriber" })
     end
   end
 end

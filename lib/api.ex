@@ -6,7 +6,8 @@ defmodule SubscriberApp.API do
   mount SubscriberApp.Router.StaticDocuments
 
   rescue_from :all, as: exception do
-    status 500
-    "ERROR: #{inspect exception}"
+    conn
+      |> put_status(500)
+      |> text("ERROR: #{inspect exception}")
   end
 end

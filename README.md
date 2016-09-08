@@ -23,3 +23,11 @@ You don't need run `heroku run mix ecto.create`
 ```
 heroku run mix ecto.migrate
 ````
+
+### Development
+```
+iex -S mix                       # run development server
+mix deps.get                     # dependencies
+mix do ecto.create, ecto.migrate # db tasks
+mix test                         # run tests
+```
