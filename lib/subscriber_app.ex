@@ -10,5 +10,6 @@ defmodule SubscriberApp do
 
     opts = [strategy: :one_for_one, name: SubscriberApp.Supervisor]
     Supervisor.start_link(children, opts)
+    SubscriberApp.Supervisors.ListSupervisor.start_link
   end
 end
