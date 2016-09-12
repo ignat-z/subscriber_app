@@ -5,11 +5,12 @@ defmodule SubscriberApp do
     import Supervisor.Spec
 
     children = [
-      worker(SubscriberApp.Repo, [])
+      worker(SubscriberApp.Repo, []),
+      worker(SubscriberApp.RedisRepo, [:redis_connection])
     ]
-
     opts = [strategy: :one_for_one, name: SubscriberApp.Supervisor]
     Supervisor.start_link(children, opts)
+
     SubscriberApp.Supervisors.ListSupervisor.start_link
   end
 end
