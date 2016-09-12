@@ -9,7 +9,7 @@ defmodule ListTest do
 
   test "POST /" do
     result = build_conn()
-      |> put_body_or_params(%{item: 1})
+      |> put_body_or_params(%{url: "https://httpbin.org/get"})
       |> post("/list")
       |> json_response
     assert "ok" = result

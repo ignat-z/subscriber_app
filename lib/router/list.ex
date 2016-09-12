@@ -10,10 +10,17 @@ defmodule SubscriberApp.Router.List do
 
     desc "Add element to list"
     params do
-      requires :item,       type: String
+      requires :url,       type: String
     end
     post "/" do
-      result = ListServer.add(params.item)
+      result = ListServer.add(params.url)
+      conn
+        |> json(result)
+    end
+
+    desc "Check urls from list"
+    get "/check" do
+      result = ListServer.items |> HealtCheck.check |> Enum.into(%{})
       conn
         |> json(result)
     end

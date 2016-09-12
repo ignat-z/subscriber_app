@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :logger, level: :info
+
 config :maru, SubscriberApp.API,
   http: [port: 8880],
   test: true

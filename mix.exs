@@ -18,7 +18,7 @@ defmodule SubscriberApp.Mixfile do
   end
 
   def applications(:dev), do: applications(:default) ++ [:exsync]
-  def applications(_),    do: [:logger, :maru, :postgrex, :ecto]
+  def applications(_),    do: [:logger, :maru, :postgrex, :ecto, :httpotion]
 
   # Dependencies can be Hex packages:
   #
@@ -32,6 +32,7 @@ defmodule SubscriberApp.Mixfile do
   defp deps do
     [ { :maru,           "~> 0.10" },
       { :ecto,           "~> 2.0" },
+      { :httpotion,      "~> 3.0.0" },
       { :scrivener,      "~> 2.1.1" },
       { :scrivener_ecto, "~> 1.0.1"},
       { :postgrex,       ">= 0.0.0" },
