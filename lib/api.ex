@@ -1,6 +1,7 @@
 defmodule SubscriberApp.API do
   use Maru.Router
 
+  mount SubscriberApp.Router.List
   mount SubscriberApp.Router.Subscription
   mount SubscriberApp.Router.Subscribers
   mount SubscriberApp.Router.StaticDocuments
