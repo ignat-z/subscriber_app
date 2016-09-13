@@ -6,6 +6,15 @@ dependencies:
     - ~/.mix
     - _build
     - deps
+
+machine:
+  environment:
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+
+database:
+  override:
+    - mv config/circle.exs config/test.exs
+
 test:
   override:
     - script/ci/tests.sh
