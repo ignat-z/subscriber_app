@@ -5,7 +5,6 @@ defmodule SubscriberApp.SubscriberTest do
 
   @valid_attrs %{email: "a@b.com"}
   @invalid_email_attrs %{email: "aaa"}
-  @invalid_empty_attrs %{}
 
   test "changeset with valid attrs" do
     changeset = Subscriber.changeset(%Subscriber{}, @valid_attrs)
