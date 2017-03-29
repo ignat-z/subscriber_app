@@ -7,7 +7,7 @@ defmodule SubscriberApp.Subscriber do
   @derive {Poison.Encoder, only: [:email]}
 
   schema "subscribers" do
-    timestamps
+    timestamps()
     field :email
     field :active, :boolean, default: :true
   end
